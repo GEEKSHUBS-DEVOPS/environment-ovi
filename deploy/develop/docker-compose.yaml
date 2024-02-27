@@ -1,0 +1,30 @@
+services:
+  frontend:
+    build: 
+      context: ../../builds/angular
+    working_dir: /app
+    command: ['npm', 'run' ,'start']
+    ports: 
+     - 4200:4200
+    volumes:
+      - ../../src/frontend:/app
+  # control-panel:
+  #   build:
+  #     context: ./builds/angular
+  api:
+    build:
+      context: ../../builds/nestjs
+    working_dir: /app
+    command: ['npm', 'run' ,'start']
+    ports:
+      - 3000:3000
+    volumes:
+      - ../../src/api:/app
+  # microservice-a:
+  #   build:
+  #     context: ./builds/nestjs
+  # microservice-b:
+  #   build:
+  #     context: ./builds/php5
+
+   

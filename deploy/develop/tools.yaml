@@ -1,0 +1,18 @@
+services:
+  angular-cli:
+    build: 
+      context: ../../builds/angular
+    working_dir: /app
+    command: bash
+    user: 1000:1000
+    volumes:
+      - ../../src:/app
+
+  nestjs-cli:
+    build: 
+      context: ../../builds/nestjs
+    working_dir: /app
+    command: bash
+    user: 1000:1000
+    volumes:
+      - ../../src:/app
