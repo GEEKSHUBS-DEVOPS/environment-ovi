@@ -8,9 +8,16 @@ services:
      - 4200:4200
     volumes:
       - ../../src/frontend:/app
-  # control-panel:
-  #   build:
-  #     context: ./builds/angular
+   
+  control-panel:
+    build:
+      context: ../../builds/angular
+    working_dir: /app
+    command: ['npm', 'run' ,'start']
+    ports: 
+     - 4201:4200
+    volumes:
+      - ../../src/control-panel:/app
   api:
     build:
       context: ../../builds/nestjs
@@ -20,6 +27,7 @@ services:
       - 3000:3000
     volumes:
       - ../../src/api:/app
+    env_file: ../../.env/.local/.api
   # microservice-a:
   #   build:
   #     context: ./builds/nestjs
