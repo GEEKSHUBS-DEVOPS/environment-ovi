@@ -24,8 +24,8 @@ install: ## instala las dependencias
 	docker compose -f $(services) run --rm -u $(user):$(group) api bash -c \
 			"npm install"
 
-# dumps:
-# 	docker compose -f $(tools) run --rm mysql sh -c 'exec mysqlrestore --all-databases -uroot -p "$(mysqlpass)"' < /dumps/dataset.sql
+dumps:
+	docker compose -f $(tools) run --rm mysql sh -c 'exec mysqlrestore --all-databases -uroot -p "$(mysqlpass)"' < /dumps/dataset.sql
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
