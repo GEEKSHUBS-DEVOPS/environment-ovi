@@ -1,0 +1,20 @@
+services:
+  mysql:
+    build:
+      context: ../../builds/mysql
+    volumes:
+      - mysql:/var/lib/mysql
+    env_file: ../../.env/.local/.mysql
+  phpmyadmin:
+    build:
+      context: ../../builds/phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+
+
+
+volumes:
+  mysql:

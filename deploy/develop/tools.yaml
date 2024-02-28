@@ -31,3 +31,9 @@ services:
     volumes:
       - ../../src:/app
     env_file: ../../.env/.local/.git
+
+  mysql:
+    build: 
+      context: ../../builds/mysql
+    volumes:
+      - ../../fixtures:/dumps
